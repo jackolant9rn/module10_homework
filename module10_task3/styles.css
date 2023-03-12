@@ -1,0 +1,66 @@
+.button {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: none;
+  cursor: pointer;
+  display: flex;
+  margin: 5px 10px;
+  padding: 10px 15px;
+  border-radius: 1px;
+  font-size: 12px;
+  line-height: 15px;
+  background: lightblue;
+  transition: 0.3s;
+}
+
+.button:hover {
+  box-shadow: 0px 2px 8px 2px rgba(141,150,178,.3);
+  transform: scale(1.05);
+}
+
+.request {
+  padding: 0;
+  width: 500px;
+  display: flex;
+}
+
+.message {
+  width: 250px;
+  margin-right: 10px;
+  border: 3px solid;
+  border-color: lightblue;
+  border-radius: 5px;
+}
+
+.chatWindow {
+  padding: 0;
+  margin-top: 10px;
+  width: 485px;
+  height: 100%;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  border: 3px solid;
+  border-color: lightblue;
+  border-radius: 5px;
+}
+
+.chatMessage {
+  padding: 10px;
+  margin: 10px;
+  max-width: 200px;
+  border: 3px solid;
+  border-color: lightblue;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 15px;
+}
+
+.geoLink {
+  text-decoration: none;
+  align-self: flex-end;
+}
