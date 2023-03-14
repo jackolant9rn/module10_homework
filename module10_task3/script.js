@@ -17,13 +17,13 @@ const ws = "wss://echo-ws-service.herokuapp.com";
     websocket.onmessage = (event) => {
         let data = JSON.parse(event.data);
         if (data.echo != false) {
-            addMessage(data.message, "flex-start")
+            addMessage(data.message, "recievedMessage")
         }
     };
 
-    function addMessage(message, position="flex-end") {
+    function addMessage(message, messageClass) {
         let newMessage = `
-            <p class="chatMessage" style="align-self: ${position}">
+            <p class="chatMessage ${messageClass}">
                 ${message}
             </p>
         `;
@@ -35,18 +35,18 @@ const ws = "wss://echo-ws-service.herokuapp.com";
         let message = messageInput.value;
         let echo = true;
         if (message !== "") {
-            addMessage(message);
+            addMessage(message, "sentMessage");
             websocket.send(JSON.stringify({message, echo}));
             messageInput.value = "";
         }
     });
     
-    const error = () => {
-        let error = "Гео-позиция не может быть определена!";
+    function onGeoPositionError() {
+        let error = "Гео-локация не может быть определена!";
         addMessage(error);
     };
     
-    const success = (position) => {
+    function onGeoPositionSuccess(position) {
         let latitude = position.coords.latitude;
         let longitude = position.coords.longitude;
         let link = `https://www.openstreetmap.org/#map=15/${latitude}/${longitude}`;
@@ -56,15 +56,15 @@ const ws = "wss://echo-ws-service.herokuapp.com";
     };
     
     function addLink(link) {
-        let newMessage = `<a class="chatMessage geoLink" href="${link}" target="_blank">Гео-локация</a>`;
+        let geoMessage = `<a class="chatMessage geoLink" href="${link}" target="_blank">Гео-локация</a>`;
         let chat = chatWindow.innerHTML;
-        chatWindow.innerHTML = chat + newMessage;
+        chatWindow.innerHTML = chat + geoMessage;
     };
 
     geoButton.addEventListener("click", () => {
         if (!navigator.geolocation) {
-            console.log("You can't use geolocation!")
+            console.log("Ваш браузер не поддерживает определение гео-локации!")
         } else {
-            navigator.geolocation.getCurrentPosition(success, error);
+            navigator.geolocation.getCurrentPosition(onGeoPositionSuccess, onGeoPositionError);
         };
     });

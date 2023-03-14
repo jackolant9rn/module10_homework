@@ -39,13 +39,17 @@
 }
 
 .dark {
-  fill-opacity: 0;
+  display: none;
 }
 
-.iconSwitch .dark {
-  fill-opacity: 1;
+.light {
+  display: revert;
 }
 
-.iconSwitch .light {
-  fill-opacity: 0;
+.invert .dark {
+  display: revert;
+}
+
+.invert .light {
+  display: none;
 }

@@ -60,6 +60,14 @@
   line-height: 15px;
 }
 
+.sentMessage {
+  align-self: flex-end;
+}
+
+.recievedMessage {
+  align-self: flex-start;
+}
+
 .geoLink {
   text-decoration: none;
   align-self: flex-end;
