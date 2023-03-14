@@ -42,8 +42,7 @@ const ws = "wss://echo-ws-service.herokuapp.com";
     });
     
     function onGeoPositionError() {
-        let error = "Гео-локация не может быть определена!";
-        addMessage(error);
+        alert("Гео-локация не может быть определена!");
     };
     
     function onGeoPositionSuccess(position) {
