@@ -63,7 +63,7 @@ const ws = "wss://echo-ws-service.herokuapp.com";
 
     geoButton.addEventListener("click", () => {
         if (!navigator.geolocation) {
-            console.log("Ваш браузер не поддерживает определение гео-локации!")
+            alert("Ваш браузер не поддерживает функцию гео-локации!")
         } else {
             navigator.geolocation.getCurrentPosition(onGeoPositionSuccess, onGeoPositionError);
         };
